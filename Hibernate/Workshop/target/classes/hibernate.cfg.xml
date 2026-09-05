@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/library_db?useSSL=false&amp;serverTimezone=UTC</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+
+        <!-- Connection pool (optional: only if HikariCP in pom.xml) -->
+        <!-- <property name="hibernate.connection.provider_class">com.zaxxer.hikari.hibernate.HikariConnectionProvider</property> -->
+        <property name="hibernate.connection.pool_size">10</property>
+
+        <!-- SQL dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+        <!-- Session context management -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!-- Disable 2nd level cache -->
+        <property name="hibernate.cache.use_second_level_cache">false</property>
+
+        <!-- SQL logging -->
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">false</property>
+        <property name="hibernate.use_sql_comments">false</property>
+
+        <!-- Schema management -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Performance tuning -->
+        <property name="hibernate.jdbc.batch_size">20</property>
+        <property name="hibernate.order_inserts">true</property>
+        <property name="hibernate.order_updates">true</property>
+
+        <!-- Entity mappings -->
+        <mapping class="entity.Book"/>
+        <mapping class="entity.Author"/>
+        <mapping class="entity.Category"/>
+        <mapping class="entity.Member"/>
+        <mapping class="entity.BorrowRecord"/>
+    </session-factory>
+</hibernate-configuration>
